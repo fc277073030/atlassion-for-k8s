@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jira-server
+  labels:
+    app: jira-server
+spec:
+  selector:
+    matchLabels:
+      app: jira-server
+  template:
+    spec:
+      containers:
+        - name: fc277073030/jsd:v1
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: http
+              protocol: TCP
+              containerPort: 8080
+          volumeMounts:
+            - mountPath: /var/atlassian/application-data/jira
+              name: data
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: jiraData
