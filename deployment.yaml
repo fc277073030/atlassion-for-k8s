@@ -7,8 +7,12 @@ metadata:
 spec:
   selector:
     matchLabels:
+      name: jira
       app: jira
   template:
+    metadata:
+      labels:
+        app: jira
     spec:
       containers:
         - name: fc277073030/jsd:v1
