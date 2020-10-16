@@ -1,13 +1,13 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: jira-server
+  name: jira
   labels:
-    app: jira-server
+    app: jira
 spec:
   selector:
     matchLabels:
-      app: jira-server
+      app: jira
   template:
     spec:
       containers:
