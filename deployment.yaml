@@ -7,7 +7,6 @@ metadata:
 spec:
   selector:
     matchLabels:
-      name: jira
       app: jira
   template:
     metadata:
@@ -15,7 +14,8 @@ spec:
         app: jira
     spec:
       containers:
-        - name: fc277073030/jsd:v1
+        - name: jira
+          image: fc277073030/jira-servicedesk:v1
           imagePullPolicy: IfNotPresent
           ports:
             - name: http
