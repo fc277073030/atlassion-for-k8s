@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: confluence
-          image: fc277073030/confluence:v1
+          image: fc277073030/confluence:latest
           imagePullPolicy: IfNotPresent
           ports:
             - name: web
