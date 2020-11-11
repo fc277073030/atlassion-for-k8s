@@ -9,4 +9,4 @@ spec:
         paths:
           - backend:
               serviceName: confluence
-              servicePort: 8080
+              servicePort: 8090
