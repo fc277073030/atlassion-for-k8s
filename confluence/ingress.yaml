@@ -1,0 +1,12 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: confluence
+spec:
+  rules:
+    - host: test-confluence.arnoo.com
+      http:
+        paths:
+          - backend:
+              serviceName: confluence
+              servicePort: 8080
