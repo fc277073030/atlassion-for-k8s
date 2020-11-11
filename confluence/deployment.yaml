@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: confluence
+  labels:
+    app: confluence
+spec:
+  selector:
+    matchLabels:
+      app: confluence
+  template:
+    metadata:
+      labels:
+        app: confluence
+    spec:
+      containers:
+        - name: confluence
+          image: fc277073030/confluence:v1
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: http
+              protocol: TCP
+              containerPort: 8090
+            - name: http
+              protocol: TCP
+              containerPort: 8091
+          volumeMounts:
+            - mountPath: /var/atlassian/application-data/confluence
+              name: data
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: confluence-data
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: confluence
+spec:
+  type: ClusterIP
+  ports:
+    - port: 8080
+      targetPort: 8080
+  selector:
+    app: confluence
