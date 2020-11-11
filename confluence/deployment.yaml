@@ -18,7 +18,7 @@ spec:
           image: fc277073030/confluence:v1
           imagePullPolicy: IfNotPresent
           ports:
-            - name: http
+            - name: web
               protocol: TCP
               containerPort: 8090
             - name: http
